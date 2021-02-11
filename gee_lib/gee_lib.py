@@ -23,9 +23,21 @@ except:
 # ---------- 1. Create Internal Variables ---------- #
 # -------------------------------------------------- #
 
+_COLLECTION_ID_KEY = 'COLLECTION_ID'
 _DATE_KEY = 'DATE'
 _START_DATE_KEY = 'START_DATE'
 _END_DATE_KEY = 'END_DATE'
+_BANDS_KEY = 'BANDS'
+
+# ----- SATELITE BANDS ----- #
+
+_RED_KEY = 'RED'
+_GREEN_KEY = 'GREEN'
+_BLUE_KEY = 'BLUE'
+_NIR_KEY = 'NIR'
+_NIR_1_KEY = 'NIR_1'
+_NIR_2_KEY = 'NIR_2'
+_BQA_KEY = 'BQA'
 
 _GEOMETRY_COUNTRY_COLLECTION = ee.FeatureCollection('users/midekisa/Countries')  # add countries boundary geometries
 
@@ -139,26 +151,9 @@ VI = Vegetation Indices
 -----------------------------------
 '''
 
-# ----- SATELITE BANDS ----- #
-
-GSV_DS_BAND_RED = "RED"
-GSV_DS_BAND_BLUE = "BLUE"
-GSV_DS_BAND_GREEN = "GREEN"
-GSV_DS_BAND_NEAR_INFRARED = "NIR"
-GSV_DS_BAND_SHORTWAVE_INFRARED_1 = "SWIR_1"
-GSV_DS_BAND_SHORTWAVE_INFRARED_2 = "SWIR_2"
-GSV_DS_BAND_THERMAL = "THERMAL"
-GSV_DS_BAND_BRIGHTMESS_TEMPERATURE = "BRIGHTNES_TEMPERATURE"
-GSV_DS_BAND_ATMOSPHERIC_OPACITY = "ATMOSHPERIC_OPACITY"
-GSV_DS_BAND_CLOUD_QA = "CLOUD_QA"
-GSV_DS_BAND_PIXEL_QA = "PIXEL_QA"
-GSV_DS_BAND_RADSAT_QA = "RADSAT_QA"
-GSV_DS_BAND_LANDSAT_BQA = "LANDSAT_BQA"
-
 # ----- LANDSAT DATASETS ----- #
 
-GSV_DS_LANDSAT_1_COLLECTION_ID = 'LANDSAT/LM01/C01/T1'
-GSV_DS_LANDSAT_1_DEFAULT_DATE_RANGE = ['1972-07-23T00:00:00', '1978-01-07T00:00:00']
+GSV_DS_LANDSAT_1_KEY = "LANDSAT_1"
 GSV_DS_LANDSAT_2_COLLECTION_ID = 'LANDSAT/LM02/C01/T1'
 GSV_DS_LANDSAT_3_COLLECTION_ID = 'LANDSAT/LM03/C01/T1'
 GSV_DS_LANDSAT_4_COLLECTION_ID = 'LANDSAT/LM04/C01/T1'
@@ -261,13 +256,22 @@ GSV_DS_NCEP_NCAR_RD_SURFACE_TEMPERATURE_COLLECTION_ID = "NCEP_RE/surface_temp"
 GSV_DS_NCEP_NCAR_RD_WATER_VAPOR_COLLECTION_ID = "NCEP_RE/surface_wv"
 GSV_DS_TOMS_OMI_MERGED_OZONE_DATA_COLLECTION_ID = "TOMS/MERGED"
 
-dict_full_dataset = {
-    GSV_DS_LANDSAT_1_COLLECTION_ID: {
+DICT_FULL_DATASET = {
+    GSV_DS_LANDSAT_1_KEY: {
+        _COLLECTION_ID_KEY: 'LANDSAT/LM01/C01/T1',
         _DATE_KEY: {
-            _START_DATE_KEY: GSV_DS_LANDSAT_1_DEFAULT_DATE_RANGE[0],
-            _END_DATE_KEY: GSV_DS_LANDSAT_1_DEFAULT_DATE_RANGE[1]
+            _START_DATE_KEY: '1972-07-23T00:00:00',
+            _END_DATE_KEY: '1978-01-07T00:00:00'
+        },
+        _BANDS_KEY: {
+            _GREEN_KEY: 'B4',
+            _RED_KEY: 'B5',
+            _NIR_1_KEY: 'B6',
+            _NIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
         }
-    }
+    },
+
 }
 
 
@@ -338,9 +342,9 @@ class GoogleEarthEngine:
             start_date = None  # create a start_date variable
             end_date = None  # create an end_date variable
             if self._collection_date_range is None:  # Check if date_range is None
-                if collection_id in dict_full_dataset.keys():  # Check if collection ID is in dict keys
-                    start_date = dict_full_dataset[collection_id][_DATE_KEY][_START_DATE_KEY]  # use the dict start date
-                    end_date = dict_full_dataset[collection_id][_DATE_KEY][_END_DATE_KEY]  # use the dict end date
+                if collection_id in DICT_FULL_DATASET.keys():  # Check if collection ID is in dict keys
+                    start_date = DICT_FULL_DATASET[collection_id][_DATE_KEY][_START_DATE_KEY]  # use the dict start date
+                    end_date = DICT_FULL_DATASET[collection_id][_DATE_KEY][_END_DATE_KEY]  # use the dict end date
 
             if start_date is None and end_date is None:  # if start date continue to be None
                 # Filter only by geometry
