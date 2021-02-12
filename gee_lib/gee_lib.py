@@ -31,13 +31,25 @@ _BANDS_KEY = 'BANDS'
 
 # ----- SATELITE BANDS ----- #
 
+_SINGLE_BAND_KEY = 'SINGLE_BAND'
 _RED_KEY = 'RED'
 _GREEN_KEY = 'GREEN'
 _BLUE_KEY = 'BLUE'
 _NIR_KEY = 'NIR'
 _NIR_1_KEY = 'NIR_1'
 _NIR_2_KEY = 'NIR_2'
+_SWIR_1_KEY = 'SWIR_1'
+_SWIR_2_KEY = 'SWIR_2'
 _BQA_KEY = 'BQA'
+_THERMAL_INFRARED_KEY = 'THERMAL_INFRARED'
+_BRIGHTNESS_TEMPERATURE_1_KEY = 'BRIGHTNESS_TEMPERATURE_1'
+_BRIGHTNESS_TEMPERATURE_2_KEY = 'BRIGHTNESS_TEMPERATURE_2'
+_THERMAL_INFRARED_1_KEY = 'THERMAL_INFRARED_1'
+_THERMAL_INFRARED_2_KEY = 'THERMAL_INFRARED_1'
+_PANCHROMATIC_KEY = 'PANCHROMATIC'
+_ULTRA_BLUE_KEY = 'ULTRA_BLUE'
+_COASTAL_AEROSOL_KEY = 'COASTAL_AEROSOL'
+_CIRRUS_KEY = "CIRRUS"
 
 _GEOMETRY_COUNTRY_COLLECTION = ee.FeatureCollection('users/midekisa/Countries')  # add countries boundary geometries
 
@@ -154,45 +166,51 @@ VI = Vegetation Indices
 # ----- LANDSAT DATASETS ----- #
 
 GSV_DS_LANDSAT_1_KEY = "LANDSAT_1"
-GSV_DS_LANDSAT_2_COLLECTION_ID = 'LANDSAT/LM02/C01/T1'
-GSV_DS_LANDSAT_3_COLLECTION_ID = 'LANDSAT/LM03/C01/T1'
-GSV_DS_LANDSAT_4_COLLECTION_ID = 'LANDSAT/LM04/C01/T1'
-GSV_DS_LANDSAT_5_COLLECTION_ID = 'LANDSAT/LM05/C01/T1'
-GSV_DS_LANDSAT_7_COLLECTION_ID = 'LANDSAT/LM07/C01/T1'
+GSV_DS_LANDSAT_2_KEY = "LANDSAT_2"
+GSV_DS_LANDSAT_3_KEY = "LANDSAT_3"
 GSV_DS_LANDSAT_8_COLLECTION_ID = 'LANDSAT/LM08/C01/T1'
 
-GSV_DS_LANDSAT_4_SR_COLLECTION_ID = "LANDSAT/LT04/C01/T1_SR"
-GSV_DS_LANDSAT_4_TOA_COLLECTION_ID = "LANDSAT/LT04/C01/T1_TOA"
-GSV_DS_LANDSAT_4_LT_RAW_COLLECTION_ID = "LANDSAT/LT04/C01/T1"
+GSV_DS_LANDSAT_4_KEY = "LANDSAT_4"
+GSV_DS_LANDSAT_4_SR_T1_KEY = "LANDSAT_4_SR_T1"
+GSV_DS_LANDSAT_4_TOA_T1_KEY = "LANDSAT_4_TOA_T1"
+GSV_DS_LANDSAT_4_RAW_T1_KEY = "LANDSAT_4_RAW_T1"
+GSV_DS_LANDSAT_4_8DAY_BAI_KEY = "LANDSAT_4_8DAY_BAI"
+GSV_DS_LANDSAT_4_8DAY_EVI_KEY = "LANDSAT_4_8DAY_EVI"
+GSV_DS_LANDSAT_4_8DAY_NDVI_KEY = "LANDSAT_4_8DAY_NDVI"
+GSV_DS_LANDSAT_4_8DAY_NBRT_KEY = "LANDSAT_4_8DAY_NBRT"
+GSV_DS_LANDSAT_4_8DAY_NDSI_KEY = "LANDSAT_4_8DAY_NDSI"
+GSV_DS_LANDSAT_4_8DAY_NDWI_KEY = "LANDSAT_4_8DAY_NDWI"
 
-GSV_DS_LANDSAT_4_8DAY_BAI_COLLECTION_ID = "LANDSAT/LT04/C01/T1_8DAY_BAI"
-GSV_DS_LANDSAT_4_8DAY_EVI_COLLECTION_ID = "LANDSAT/LT04/C01/T1_8DAY_EVI"
-GSV_DS_LANDSAT_4_8DAY_NDVI_COLLECTION_ID = "LANDSAT/LT04/C01/T1_8DAY_NDVI"
-GSV_DS_LANDSAT_4_8DAY_NBRT_COLLECTION_ID = "LANDSAT/LT04/C01/T1_8DAY_NBRT"
-GSV_DS_LANDSAT_4_8DAY_NDSI_COLLECTION_ID = "LANDSAT/LT04/C01/T1_8DAY_NDSI"
-GSV_DS_LANDSAT_4_8DAY_NDWI_COLLECTION_ID = "LANDSAT/LT04/C01/T1_8DAY_NDWI"
+GSV_DS_LANDSAT_5_KEY = "LANDSAT_5"
+GSV_DS_LANDSAT_5_SR_T1_KEY = "LANDSAT_5_SR_T1"
+GSV_DS_LANDSAT_5_TOA_T1_KEY = "LANDSAT_5_TOA_T1"
+GSV_DS_LANDSAT_5_RAW_T1_KEY = "LANDSAT_5_RAW_T1"
+GSV_DS_LANDSAT_5_8DAY_BAI_KEY = "LANDSAT_5_8DAY_BAI"
+GSV_DS_LANDSAT_5_8DAY_EVI_KEY = "LANDSAT_5_8DAY_EVI"
+GSV_DS_LANDSAT_5_8DAY_NDVI_KEY = "LANDSAT_5_8DAY_NDVI"
+GSV_DS_LANDSAT_5_8DAY_NBRT_KEY = "LANDSAT_5_8DAY_NBRT"
+GSV_DS_LANDSAT_5_8DAY_NDSI_KEY = "LANDSAT_5_8DAY_NDSI"
+GSV_DS_LANDSAT_5_8DAY_NDWI_KEY = "LANDSAT_5_8DAY_NDWI"
 
-GSV_DS_LANDSAT_5_SR_COLLECTION_ID = "LANDSAT/LT05/C01/T1_SR"
-GSV_DS_LANDSAT_5_TOA_COLLECTION_ID = "LANDSAT/LT05/C01/T1_TOA"
-GSV_DS_LANDSAT_5_LT_RAW_COLLECTION_ID = "LANDSAT/LT05/C01/T1"
+GSV_DS_LANDSAT_7_SR_T1_KEY = "LANDSAT_7_SR_T1"
+GSV_DS_LANDSAT_7_TOA_T1_KEY = "LANDSAT_7_TOA_T1"
+GSV_DS_LANDSAT_7_RAW_T1_KEY = "LANDSAT_7_RAW_T1"
+GSV_DS_LANDSAT_7_8DAY_BAI_KEY = "LANDSAT_7_8DAY_BAI"
+GSV_DS_LANDSAT_7_8DAY_EVI_KEY = "LANDSAT_7_8DAY_EVI"
+GSV_DS_LANDSAT_7_8DAY_NDVI_KEY = "LANDSAT_7_8DAY_NDVI"
+GSV_DS_LANDSAT_7_8DAY_NBRT_KEY = "LANDSAT_7_8DAY_NBRT"
+GSV_DS_LANDSAT_7_8DAY_NDSI_KEY = "LANDSAT_7_8DAY_NDSI"
+GSV_DS_LANDSAT_7_8DAY_NDWI_KEY = "LANDSAT_7_8DAY_NDWI"
 
-GSV_DS_LANDSAT_5_8DAY_BAI_COLLECTION_ID = "LANDSAT/LT05/C01/T1_8DAY_BAI"
-GSV_DS_LANDSAT_5_8DAY_EVI_COLLECTION_ID = "LANDSAT/LT05/C01/T1_8DAY_EVI"
-GSV_DS_LANDSAT_5_8DAY_NDVI_COLLECTION_ID = "LANDSAT/LT05/C01/T1_8DAY_NDVI"
-GSV_DS_LANDSAT_5_8DAY_NBRT_COLLECTION_ID = "LANDSAT/LT05/C01/T1_8DAY_NBRT"
-GSV_DS_LANDSAT_5_8DAY_NDSI_COLLECTION_ID = "LANDSAT/LT05/C01/T1_8DAY_NDSI"
-GSV_DS_LANDSAT_5_8DAY_NDWI_COLLECTION_ID = "LANDSAT/LT05/C01/T1_8DAY_NDWI"
-
-GSV_DS_LANDSAT_7_SR_COLLECTION_ID = "LANDSAT/LE07/C01/T1_SR"
-GSV_DS_LANDSAT_7_TOA_COLLECTION_ID = "LANDSAT/LE07/C01/T1_TOA"
-GSV_DS_LANDSAT_7_LT_RAW_COLLECTION_ID = "LANDSAT/LE07/C01/T1"
-
-GSV_DS_LANDSAT_7_8DAY_BAI_COLLECTION_ID = "LANDSAT/LE07/C01/T1_8DAY_BAI"
-GSV_DS_LANDSAT_7_8DAY_EVI_COLLECTION_ID = "LANDSAT/LE07/C01/T1_8DAY_EVI"
-GSV_DS_LANDSAT_7_8DAY_NDVI_COLLECTION_ID = "LANDSAT/LE07/C01/T1_8DAY_NDVI"
-GSV_DS_LANDSAT_7_8DAY_NBRT_COLLECTION_ID = "LANDSAT/LE07/C01/T1_8DAY_NBRT"
-GSV_DS_LANDSAT_7_8DAY_NDSI_COLLECTION_ID = "LANDSAT/LE07/C01/T1_8DAY_NDSI"
-GSV_DS_LANDSAT_7_8DAY_NDWI_COLLECTION_ID = "LANDSAT/LE07/C01/T1_8DAY_NDWI"
+GSV_DS_LANDSAT_8_SR_T1_KEY = "LANDSAT_8_SR_T1"
+GSV_DS_LANDSAT_8_TOA_T1_KEY = "LANDSAT_8_TOA_T1"
+GSV_DS_LANDSAT_8_RAW_T1_KEY = "LANDSAT_8_RAW_T1"
+GSV_DS_LANDSAT_8_8DAY_BAI_KEY = "LANDSAT_8_8DAY_BAI"
+GSV_DS_LANDSAT_8_8DAY_EVI_KEY = "LANDSAT_8_8DAY_EVI"
+GSV_DS_LANDSAT_8_8DAY_NDVI_KEY = "LANDSAT_8_8DAY_NDVI"
+GSV_DS_LANDSAT_8_8DAY_NBRT_KEY = "LANDSAT_8_8DAY_NBRT"
+GSV_DS_LANDSAT_8_8DAY_NDSI_KEY = "LANDSAT_8_8DAY_NDSI"
+GSV_DS_LANDSAT_8_8DAY_NDWI_KEY = "LANDSAT_8_8DAY_NDWI"
 
 # ----- SENTINEL DATASETS ----- #
 
@@ -257,7 +275,7 @@ GSV_DS_NCEP_NCAR_RD_WATER_VAPOR_COLLECTION_ID = "NCEP_RE/surface_wv"
 GSV_DS_TOMS_OMI_MERGED_OZONE_DATA_COLLECTION_ID = "TOMS/MERGED"
 
 DICT_FULL_DATASET = {
-    GSV_DS_LANDSAT_1_KEY: {
+    GSV_DS_LANDSAT_1_KEY: {  # LANDSAT 1 DATASET
         _COLLECTION_ID_KEY: 'LANDSAT/LM01/C01/T1',
         _DATE_KEY: {
             _START_DATE_KEY: '1972-07-23T00:00:00',
@@ -269,6 +287,476 @@ DICT_FULL_DATASET = {
             _NIR_1_KEY: 'B6',
             _NIR_2_KEY: 'B7',
             _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_2_KEY: {  # LANDSAT 2 DATASET
+        _COLLECTION_ID_KEY: 'LANDSAT/LM02/C01/T1',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1975-01-22T00:00:00',
+            _END_DATE_KEY: '1982-02-26T00:00:00'
+        },
+        _BANDS_KEY: {
+            _GREEN_KEY: 'B4',
+            _RED_KEY: 'B5',
+            _NIR_1_KEY: 'B6',
+            _NIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_3_KEY: {  # LANDSAT 3 DATASET
+        _COLLECTION_ID_KEY: 'LANDSAT/LM03/C01/T1',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1978-03-05T00:00:00',
+            _END_DATE_KEY: '1983-03-31T00:00:00'
+        },
+        _BANDS_KEY: {
+            _GREEN_KEY: 'B4',
+            _RED_KEY: 'B5',
+            _NIR_1_KEY: 'B6',
+            _NIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_4_KEY: {  # LANDSAT 4 DATASET
+        _COLLECTION_ID_KEY: 'LANDSAT/LM04/C01/T1',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1982-07-16T00:00:00',
+            _END_DATE_KEY: '1993-12-14T00:00:00'
+        },
+        _BANDS_KEY: {
+            _GREEN_KEY: 'B4',
+            _RED_KEY: 'B5',
+            _NIR_1_KEY: 'B6',
+            _NIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_4_SR_T1_KEY: {  # LANDSAT 4 SR T1
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1_SR',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1984-03-01T00:00:00',
+            _END_DATE_KEY: '2013-01-31T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_KEY: 'B6',
+            _SWIR_2_KEY: 'B7'
+        }
+    }, GSV_DS_LANDSAT_4_TOA_T1_KEY: {  # LANDSAT 4 SR TOA
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1_TOA',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1984-03-01T00:00:00',
+            _END_DATE_KEY: '2013-01-31T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_KEY: 'B6',
+            _SWIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_4_RAW_T1_KEY: {  # LANDSAT 4 RAW
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1982-08-22T00:00:00',
+            _END_DATE_KEY: '1982-08-22T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_KEY: 'B6',
+            _SWIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_4_8DAY_BAI_KEY: {  # LANDSAT 4 BAI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1_8DAY_BAI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1989-01-01',
+            _END_DATE_KEY: '1992-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'BAI'
+        }
+    }, GSV_DS_LANDSAT_4_8DAY_EVI_KEY: {  # LANDSAT 4 EVI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1_8DAY_EVI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1989-01-01',
+            _END_DATE_KEY: '1992-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'EVI'
+        }
+    }, GSV_DS_LANDSAT_4_8DAY_NDVI_KEY: {  # LANDSAT 4 NDVI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1_8DAY_NDVI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1989-01-01',
+            _END_DATE_KEY: '1992-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDVI'
+        }
+    }, GSV_DS_LANDSAT_4_8DAY_NBRT_KEY: {  # LANDSAT 4 NBRT
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1_8DAY_NBRT',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1989-01-01',
+            _END_DATE_KEY: '1992-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NBRT'
+        }
+    }, GSV_DS_LANDSAT_4_8DAY_NDSI_KEY: {  # LANDSAT 4 NDSI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1_8DAY_NDSI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1989-01-01',
+            _END_DATE_KEY: '1992-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDSI'
+        }
+    }, GSV_DS_LANDSAT_4_8DAY_NDWI_KEY: {  # LANDSAT 4 NDWI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT04/C01/T1_8DAY_NDWI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1989-01-01',
+            _END_DATE_KEY: '1992-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDWI'
+        }
+    }, GSV_DS_LANDSAT_5_KEY: {  # LANDSAT 5
+        _COLLECTION_ID_KEY: 'LANDSAT/LM05/C01/T1',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1984-03-01T00:00:00',
+            _END_DATE_KEY: '2013-01-31T00:00:00'
+        },
+        _BANDS_KEY: {
+            _GREEN_KEY: 'B4',
+            _RED_KEY: 'B5',
+            _NIR_1_KEY: 'B6',
+            _NIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_5_SR_T1_KEY: {  # LANDSAT 5 SR T1
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1_SR',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1984-01-01T00:00:00',
+            _END_DATE_KEY: '2012-05-05T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_KEY: 'B6',
+            _SWIR_2_KEY: 'B7'
+        }
+    }, GSV_DS_LANDSAT_5_TOA_T1_KEY: {  # LANDSAT 5 SR TOA
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1_TOA',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1984-01-01T00:00:00',
+            _END_DATE_KEY: '2012-05-05T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_KEY: 'B6',
+            _SWIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_5_RAW_T1_KEY: {  # LANDSAT 5 RAW
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1984-01-01T00:00:00',
+            _END_DATE_KEY: '2012-05-05T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_KEY: 'B6',
+            _SWIR_2_KEY: 'B7',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_5_8DAY_BAI_KEY: {  # LANDSAT 5 BAI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1_8DAY_BAI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2011-01-01',
+            _END_DATE_KEY: '2011-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'BAI'
+        }
+    }, GSV_DS_LANDSAT_5_8DAY_EVI_KEY: {  # LANDSAT 5 EVI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1_8DAY_EVI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2011-01-01',
+            _END_DATE_KEY: '2011-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'EVI'
+        }
+    }, GSV_DS_LANDSAT_5_8DAY_NDVI_KEY: {  # LANDSAT 5 NDVI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1_8DAY_NDVI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2011-01-01',
+            _END_DATE_KEY: '2011-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDVI'
+        }
+    }, GSV_DS_LANDSAT_5_8DAY_NBRT_KEY: {  # LANDSAT 5 NBRT
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1_8DAY_NBRT',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2011-01-01',
+            _END_DATE_KEY: '2011-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NBRT'
+        }
+    }, GSV_DS_LANDSAT_5_8DAY_NDSI_KEY: {  # LANDSAT 5 NDSI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1_8DAY_NDSI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2011-01-01',
+            _END_DATE_KEY: '2011-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDSI'
+        }
+    }, GSV_DS_LANDSAT_5_8DAY_NDWI_KEY: {  # LANDSAT 5 NDWI
+        _COLLECTION_ID_KEY: 'LANDSAT/LT05/C01/T1_8DAY_NDWI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2011-01-01',
+            _END_DATE_KEY: '2011-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDWI'
+        }
+    }, GSV_DS_LANDSAT_7_SR_T1_KEY: {  # LANDSAT 7 SR T1
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1_SR',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01T00:00:00',
+            _END_DATE_KEY: '2021-01-13T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_KEY: 'B6',
+            _SWIR_2_KEY: 'B7'
+        }
+    }, GSV_DS_LANDSAT_7_TOA_T1_KEY: {  # LANDSAT 7 SR TOA
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1_TOA',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01T00:00:00',
+            _END_DATE_KEY: '2021-01-15T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_1_KEY: 'B6_VCID_1',
+            _THERMAL_INFRARED_2_KEY: 'B6_VCID_2',
+            _SWIR_2_KEY: 'B7',
+            _PANCHROMATIC_KEY: 'B8',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_7_RAW_T1_KEY: {  # LANDSAT 7 RAW
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01T00:00:00',
+            _END_DATE_KEY: '2021-01-15T00:00:00'
+        },
+        _BANDS_KEY: {
+            _BLUE_KEY: 'B1',
+            _GREEN_KEY: 'B2',
+            _RED_KEY: 'B3',
+            _NIR_KEY: 'B4',
+            _SWIR_1_KEY: 'B5',
+            _THERMAL_INFRARED_1_KEY: 'B6_VCID_1',
+            _THERMAL_INFRARED_2_KEY: 'B6_VCID_2',
+            _SWIR_2_KEY: 'B7',
+            _PANCHROMATIC_KEY: 'B8',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_7_8DAY_BAI_KEY: {  # LANDSAT 7 BAI
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1_8DAY_BAI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01',
+            _END_DATE_KEY: '2002-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'BAI'
+        }
+    }, GSV_DS_LANDSAT_7_8DAY_EVI_KEY: {  # LANDSAT 7 EVI
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1_8DAY_EVI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01',
+            _END_DATE_KEY: '2002-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'EVI'
+        }
+    }, GSV_DS_LANDSAT_7_8DAY_NDVI_KEY: {  # LANDSAT 7 NDVI
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1_8DAY_NDVI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01',
+            _END_DATE_KEY: '2002-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDVI'
+        }
+    }, GSV_DS_LANDSAT_7_8DAY_NBRT_KEY: {  # LANDSAT 7 NBRT
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1_8DAY_NBRT',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01',
+            _END_DATE_KEY: '2002-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NBRT'
+        }
+    }, GSV_DS_LANDSAT_7_8DAY_NDSI_KEY: {  # LANDSAT 7 NDSI
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1_8DAY_NDSI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01',
+            _END_DATE_KEY: '2002-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDSI'
+        }
+    }, GSV_DS_LANDSAT_7_8DAY_NDWI_KEY: {  # LANDSAT 7 NDWI
+        _COLLECTION_ID_KEY: 'LANDSAT/LE07/C01/T1_8DAY_NDWI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01',
+            _END_DATE_KEY: '2002-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDWI'
+        }
+    }, GSV_DS_LANDSAT_8_SR_T1_KEY: {  # LANDSAT 8 SR T1
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1_SR',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2013-04-11T00:00:00',
+            _END_DATE_KEY: '2021-01-22T00:00:00'
+        },
+        _BANDS_KEY: {
+            _ULTRA_BLUE_KEY: 'B1',
+            _BLUE_KEY: 'B2',
+            _GREEN_KEY: 'B3',
+            _RED_KEY: 'B4',
+            _NIR_KEY: 'B5',
+            _SWIR_1_KEY: 'B6',
+            _SWIR_2_KEY: 'B7',
+            _BRIGHTNESS_TEMPERATURE_1_KEY: 'B10',
+            _BRIGHTNESS_TEMPERATURE_2_KEY: 'B11'
+        }
+    }, GSV_DS_LANDSAT_8_TOA_T1_KEY: {  # LANDSAT 8 SR TOA
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1_TOA',
+        _DATE_KEY: {
+            _START_DATE_KEY: '1999-01-01T00:00:00',
+            _END_DATE_KEY: '2021-01-15T00:00:00'
+        },
+        _BANDS_KEY: {
+            _COASTAL_AEROSOL_KEY: 'B1',
+            _BLUE_KEY: 'B2',
+            _GREEN_KEY: 'B3',
+            _RED_KEY: 'B4',
+            _NIR_KEY: 'B5',
+            _SWIR_1_KEY: 'B6',
+            _SWIR_2_KEY: 'B7',
+            _PANCHROMATIC_KEY: 'B8',
+            _CIRRUS_KEY: 'B9',
+            _THERMAL_INFRARED_1_KEY: 'B10',
+            _THERMAL_INFRARED_2_KEY: 'B11',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_8_RAW_T1_KEY: {  # LANDSAT 8 RAW
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2013-04-11T00:00:00',
+            _END_DATE_KEY: '2021-02-05T00:00:00'
+        },
+        _BANDS_KEY: {
+            _COASTAL_AEROSOL_KEY: 'B1',
+            _BLUE_KEY: 'B2',
+            _GREEN_KEY: 'B3',
+            _RED_KEY: 'B4',
+            _NIR_KEY: 'B5',
+            _SWIR_1_KEY: 'B6',
+            _SWIR_2_KEY: 'B7',
+            _PANCHROMATIC_KEY: 'B8',
+            _CIRRUS_KEY: 'B9',
+            _THERMAL_INFRARED_1_KEY: 'B10',
+            _THERMAL_INFRARED_2_KEY: 'B11',
+            _BQA_KEY: 'BQA'
+        }
+    }, GSV_DS_LANDSAT_8_8DAY_BAI_KEY: {  # LANDSAT 8 BAI
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1_8DAY_BAI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2017-01-01',
+            _END_DATE_KEY: '2017-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'BAI'
+        }
+    }, GSV_DS_LANDSAT_8_8DAY_EVI_KEY: {  # LANDSAT 8 EVI
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1_8DAY_EVI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2017-01-01',
+            _END_DATE_KEY: '2017-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'EVI'
+        }
+    }, GSV_DS_LANDSAT_8_8DAY_NDVI_KEY: {  # LANDSAT 8 NDVI
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1_8DAY_NDVI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2017-01-01',
+            _END_DATE_KEY: '2017-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDVI'
+        }
+    }, GSV_DS_LANDSAT_8_8DAY_NBRT_KEY: {  # LANDSAT 8 NBRT
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1_8DAY_NBRT',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2017-01-01',
+            _END_DATE_KEY: '2017-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NBRT'
+        }
+    }, GSV_DS_LANDSAT_8_8DAY_NDSI_KEY: {  # LANDSAT 8 NDSI
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1_8DAY_NDSI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2017-01-01',
+            _END_DATE_KEY: '2017-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDSI'
+        }
+    }, GSV_DS_LANDSAT_8_8DAY_NDWI_KEY: {  # LANDSAT 8 NDWI
+        _COLLECTION_ID_KEY: 'LANDSAT/LC08/C01/T1_8DAY_NDWI',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2017-01-01',
+            _END_DATE_KEY: '2017-12-31'
+        },
+        _BANDS_KEY: {
+            _SINGLE_BAND_KEY: 'NDWI'
         }
     },
 
