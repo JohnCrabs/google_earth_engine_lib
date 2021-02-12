@@ -60,6 +60,7 @@ _GEOMETRY_COUNTRY_COLLECTION = ee.FeatureCollection('users/midekisa/Countries') 
 # ----- INDEXED ----- #
 BAI_INDEX = 'BAI'
 EVI_INDEX = 'EVI'
+EVI2_INDEX = 'EVI2'
 NDVI_INDEX = 'NDVI'
 NBRT_INDEX = 'NBRT'
 NDSI_INDEX = 'NDSI'
@@ -825,6 +826,7 @@ class GoogleEarthEngine:
         self._collection_bounds_geometry = None
         self._image = None
         self._dataset_id = None
+        self._export_name_base = ""
         self._export_name = ""
 
     # ----- Print Functions (Debugging) ----- #
@@ -872,7 +874,7 @@ class GoogleEarthEngine:
         :return: Nothing
         """
         if dataset_id in DICT_FULL_DATASET.keys():  # if dataset_id in DICT_FULL_DATASET key list
-            self._export_name += DICT_FULL_DATASET[dataset_id][_COLLECTION_ID_KEY].replace("/", "_")
+            self._export_name_base = DICT_FULL_DATASET[dataset_id][_COLLECTION_ID_KEY].replace("/", "_")
             self._dataset_id = dataset_id
             # Set the _image_collection
             self._image_collection = ee.ImageCollection(DICT_FULL_DATASET[dataset_id][_COLLECTION_ID_KEY])
@@ -880,9 +882,9 @@ class GoogleEarthEngine:
             if self._collection_date_range is not None:  # Check if date range is not none
                 # If True, then filter by the date range
                 self._image_collection = self._image_collection.filterDate(self._collection_date_range[0],
-                                                                           self._collection_date_range[0])
-                self._export_name += "_" + self._collection_date_range[0].replace("-", "") + \
-                                     self._collection_date_range[0].replace("-", "")
+                                                                           self._collection_date_range[1])
+                self._export_name_base += "_" + self._collection_date_range[0].replace("-", "").replace(':', "") + \
+                                          self._collection_date_range[1].replace("-", "").replace(':', "")
                 # print(self._image_collection, '\n')
             if self._collection_bounds_geometry is not None:  # Check if geometry is not none
                 # If True, then filter by geometry
@@ -891,7 +893,8 @@ class GoogleEarthEngine:
         else:  # if dataset_id not in FICT_FULL_DATASET key list
             print("Error: Uknown Dataset.")  # print error
 
-    def create_image_index(self, index_name, clip_image=False):
+    def create_image_index(self, index_name, clip_image=False, G=2.5, L=1.0, C1=6, C2=7.5):
+        self._export_name = self._export_name_base
         if index_name == BAI_INDEX:
             tmp_mean_img = self._image_collection.mean()
             self._image = tmp_mean_img.expression(
@@ -903,7 +906,31 @@ class GoogleEarthEngine:
             )
             self._export_name += '_BAI'
         elif index_name == EVI_INDEX:
-            pass
+            tmp_mean_img = self._image_collection.mean()
+            self._image = tmp_mean_img.expression(
+                'G * (NIR - RED) / (NIR + C1 * RED - C2 * BLUE + L)',
+                {
+                    'G': G,
+                    'C1': C1,
+                    'C2': C2,
+                    'L': L,
+                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_RED_KEY]),
+                    'BLUE': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_BLUE_KEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_NIR_KEY])
+                }
+            )
+            self._export_name += '_EVI'
+        elif index_name == EVI2_INDEX:
+            tmp_mean_img = self._image_collection.mean()
+            self._image = tmp_mean_img.expression(
+                '2.5 * (NIR - RED) / (NIR + 2.4 * RED + 1)',
+                {
+                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_RED_KEY]),
+                    'BLUE': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_BLUE_KEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_NIR_KEY])
+                }
+            )
+            self._export_name += '_EVI2'
         elif index_name == NDVI_INDEX:
             tmp_mean_img = self._image_collection.mean()
             self._image = tmp_mean_img.expression(
