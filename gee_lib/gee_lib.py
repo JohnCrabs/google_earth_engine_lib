@@ -45,11 +45,15 @@ _THERMAL_INFRARED_KEY = 'THERMAL_INFRARED'
 _BRIGHTNESS_TEMPERATURE_1_KEY = 'BRIGHTNESS_TEMPERATURE_1'
 _BRIGHTNESS_TEMPERATURE_2_KEY = 'BRIGHTNESS_TEMPERATURE_2'
 _THERMAL_INFRARED_1_KEY = 'THERMAL_INFRARED_1'
-_THERMAL_INFRARED_2_KEY = 'THERMAL_INFRARED_1'
+_THERMAL_INFRARED_2_KEY = 'THERMAL_INFRARED_2'
 _PANCHROMATIC_KEY = 'PANCHROMATIC'
 _ULTRA_BLUE_KEY = 'ULTRA_BLUE'
 _COASTAL_AEROSOL_KEY = 'COASTAL_AEROSOL'
 _CIRRUS_KEY = "CIRRUS"
+_HH_KEY = "HH"
+_HV_KEY = "HV"
+_VV_KEY = "VV"
+_VH_KEY = "VH"
 
 _GEOMETRY_COUNTRY_COLLECTION = ee.FeatureCollection('users/midekisa/Countries')  # add countries boundary geometries
 
@@ -214,7 +218,7 @@ GSV_DS_LANDSAT_8_8DAY_NDWI_KEY = "LANDSAT_8_8DAY_NDWI"
 
 # ----- SENTINEL DATASETS ----- #
 
-GSV_DS_SENTINEL_1_SAR_GRD_COLLECTION_ID = "COPERNICUS/S1_GRD"
+GSV_DS_SENTINEL_1_SAR_GRD_KEY = "SENTINEL_1_SAR_GRD"
 
 GSV_DS_SENTINEL_2_MSI_TOA_COLLECTION_ID = "COPERNICUS/S2"
 GSV_DS_SENTINEL_2_MSI_SR_COLLECTION_ID = "COPERNICUS/S2_SR"
@@ -758,6 +762,18 @@ DICT_FULL_DATASET = {
         _BANDS_KEY: {
             _SINGLE_BAND_KEY: 'NDWI'
         }
+    }, GSV_DS_SENTINEL_1_SAR_GRD_KEY: {  # SENTINEL 1 SAR GRD
+        _COLLECTION_ID_KEY: 'COPERNICUS/S1_GRD',
+        _DATE_KEY: {
+            _START_DATE_KEY: '2014-10-03T00:00:00',
+            _END_DATE_KEY: '2021-02-10T00:00:00'
+        },
+        _BANDS_KEY: {
+            _HH_KEY: 'HH',
+            _HV_KEY: 'HV',
+            _VV_KEY: 'VV',
+            _VH_KEY: 'VH',
+        }
     },
 
 }
@@ -771,15 +787,20 @@ DICT_FULL_DATASET = {
 # ---------- 4. Create Functions ---------- #
 # ----------------------------------------- #
 
-def prt_dictionary_full_data():
+def prt_dict_full_data():
     print(DICT_FULL_DATASET)
 
 
-def prt_dictionary_full_dataset(dataset_id):
+def prt_dict_full_dataset(dataset_id):
     if dataset_id in DICT_FULL_DATASET.keys():
         print(DICT_FULL_DATASET[dataset_id])
     else:
         print("<" + dataset_id + "> dataset does not exist in dictionary.")
+
+
+def get_default_date_range_from_dict_dataset(dataset_id):
+    return [DICT_FULL_DATASET[dataset_id][_DATE_KEY][_START_DATE_KEY],
+            DICT_FULL_DATASET[dataset_id][_DATE_KEY][_END_DATE_KEY]]
 
 # ------------------------------ #
 # ---------- 5. Class ---------- #
@@ -832,41 +853,26 @@ class GoogleEarthEngine:
 
         self._collection_bounds_geometry = new_geometry.geometry()
 
-    def set_collection(self, collection_id):
-        # Check if user has not specify either a date or a geometry
-        if self._collection_date_range is None and self._collection_bounds_geometry is None:
-            self._image_collection = ee.ImageCollection(collection_id)  # use only the collection id
-        else:  # Else
-            start_date = None  # create a start_date variable
-            end_date = None  # create an end_date variable
-            if self._collection_date_range is None:  # Check if date_range is None
-                if collection_id in DICT_FULL_DATASET.keys():  # Check if collection ID is in dict keys
-                    start_date = DICT_FULL_DATASET[collection_id][_DATE_KEY][_START_DATE_KEY]  # use the dict start date
-                    end_date = DICT_FULL_DATASET[collection_id][_DATE_KEY][_END_DATE_KEY]  # use the dict end date
+    def set_collection(self, dataset_id):
+        """
+        Set the ee.ImageCollection(), which will be used for processing
+        :param dataset_id: the DICT_FULL_DATASET key
+        :return: Nothing
+        """
+        if dataset_id in DICT_FULL_DATASET.keys():  # if dataset_id in DICT_FULL_DATASET key list
+            # Set the _image_collection
+            self._image_collection = ee.ImageCollection(DICT_FULL_DATASET[dataset_id][_COLLECTION_ID_KEY])
+            # print(self._image_collection, '\n')
+            if self._collection_date_range is not None:  # Check if date range is not none
+                # If True, then filter by the date range
+                self._image_collection = self._image_collection.filterDate(self._collection_date_range[0],
+                                                                           self._collection_date_range[1])
+                # print(self._image_collection, '\n')
+            if self._collection_bounds_geometry is not None:  # Check if geometry is not none
+                # If True, then filter by geometry
+                self._image_collection = self._image_collection.filterBounds(self._collection_bounds_geometry)
+                # print(self._image_collection, '\n')
+        else:  # if dataset_id not in FICT_FULL_DATASET key list
+            print("Error: Uknown Dataset.")  # print error
 
-            if start_date is None and end_date is None:  # if start date continue to be None
-                # Filter only by geometry
-                self._image_collection = ee.ImageCollection(collection_id).filterBounds(
-                    self._collection_bounds_geometry)
-            else:
-                if self._collection_bounds_geometry is None:  # if geometry is None
-                    self._image_collection = ee.ImageCollection(collection_id).filterDate(start_date, end_date)
-                else:  # Else
-                    self._image_collection = ee.ImageCollection(collection_id).filterDate(start_date,
-                                                                                          end_date).filterBounds(
-                        self._collection_bounds_geometry)
 
-    def create_image_form_collection_mean(self):
-        self._image = self._image_collection.select(['B4']).mean().clip(self._collection_bounds_geometry)
-        print(self._image)
-
-    def export_to_Drive(self):
-        task_bash = {
-            'image': self._image,
-            'description': "something",
-            'region': self._collection_bounds_geometry,
-            'scale': 10000,
-            'folder': 'GEE_TEST'
-        }
-        task = ee.batch.Export.image.toDrive(**task_bash)
-        task.start()
