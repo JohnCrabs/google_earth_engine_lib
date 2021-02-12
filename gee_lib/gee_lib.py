@@ -771,6 +771,16 @@ DICT_FULL_DATASET = {
 # ---------- 4. Create Functions ---------- #
 # ----------------------------------------- #
 
+def prt_dictionary_full_data():
+    print(DICT_FULL_DATASET)
+
+
+def prt_dictionary_full_dataset(dataset_id):
+    if dataset_id in DICT_FULL_DATASET.keys():
+        print(DICT_FULL_DATASET[dataset_id])
+    else:
+        print("<" + dataset_id + "> dataset does not exist in dictionary.")
+
 # ------------------------------ #
 # ---------- 5. Class ---------- #
 # ------------------------------ #
