@@ -58,13 +58,12 @@ _VH_KEY = 'VH'
 _GEOMETRY_COUNTRY_COLLECTION = ee.FeatureCollection('users/midekisa/Countries')  # add countries boundary geometries
 
 # ----- INDEXED ----- #
-_BAI_INDEX = 'BAI'
-_EVI_INDEX = 'EVI'
-_NDVI_INDEX = 'NDVI'
-_NBRT_INDEX = 'NBRT'
-_NDSI_INDEX = 'NDSI'
-_NDWI_INDEX = 'NDWI'
-
+BAI_INDEX = 'BAI'
+EVI_INDEX = 'EVI'
+NDVI_INDEX = 'NDVI'
+NBRT_INDEX = 'NBRT'
+NDSI_INDEX = 'NDSI'
+NDWI_INDEX = 'NDWI'
 
 # ----------------------------------------- #
 # ---------- 2. Create Variables ---------- #
@@ -809,6 +808,7 @@ def get_default_date_range_from_dict_dataset(dataset_id):
     return [DICT_FULL_DATASET[dataset_id][_DATE_KEY][_START_DATE_KEY],
             DICT_FULL_DATASET[dataset_id][_DATE_KEY][_END_DATE_KEY]]
 
+
 # ------------------------------ #
 # ---------- 5. Class ---------- #
 # ------------------------------ #
@@ -825,6 +825,7 @@ class GoogleEarthEngine:
         self._collection_bounds_geometry = None
         self._image = None
         self._dataset_id = None
+        self._export_name = ""
 
     # ----- Print Functions (Debugging) ----- #
 
@@ -871,6 +872,7 @@ class GoogleEarthEngine:
         :return: Nothing
         """
         if dataset_id in DICT_FULL_DATASET.keys():  # if dataset_id in DICT_FULL_DATASET key list
+            self._export_name += DICT_FULL_DATASET[dataset_id][_COLLECTION_ID_KEY].replace("/", "_")
             self._dataset_id = dataset_id
             # Set the _image_collection
             self._image_collection = ee.ImageCollection(DICT_FULL_DATASET[dataset_id][_COLLECTION_ID_KEY])
@@ -878,7 +880,9 @@ class GoogleEarthEngine:
             if self._collection_date_range is not None:  # Check if date range is not none
                 # If True, then filter by the date range
                 self._image_collection = self._image_collection.filterDate(self._collection_date_range[0],
-                                                                           self._collection_date_range[1])
+                                                                           self._collection_date_range[0])
+                self._export_name += "_" + self._collection_date_range[0].replace("-", "") + \
+                                     self._collection_date_range[0].replace("-", "")
                 # print(self._image_collection, '\n')
             if self._collection_bounds_geometry is not None:  # Check if geometry is not none
                 # If True, then filter by geometry
@@ -887,12 +891,51 @@ class GoogleEarthEngine:
         else:  # if dataset_id not in FICT_FULL_DATASET key list
             print("Error: Uknown Dataset.")  # print error
 
-    def export_to_drive(self):
+    def create_image_index(self, index_name, clip_image=False):
+        if index_name == BAI_INDEX:
+            tmp_mean_img = self._image_collection.mean()
+            self._image = tmp_mean_img.expression(
+                '1.0 / ((0.1 - RED)**2 + (0.06 - NIR)**2)',
+                {
+                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_RED_KEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_NIR_KEY])
+                }
+            )
+            self._export_name += '_BAI'
+        elif index_name == EVI_INDEX:
+            pass
+        elif index_name == NDVI_INDEX:
+            tmp_mean_img = self._image_collection.mean()
+            self._image = tmp_mean_img.expression(
+                '(NIR - RED) / (NIR + RED)',
+                {
+                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_RED_KEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_KEY][_NIR_KEY])
+                }
+            )
+            self._export_name += '_NDVI'
+        elif index_name == NBRT_INDEX:
+            pass
+        elif index_name == NDSI_INDEX:
+            pass
+        elif index_name == NDWI_INDEX:
+            pass
+        else:
+            print("Error: Uknown Index")
+            return
+        if clip_image:
+            if self._collection_bounds_geometry is not None:
+                self._image = self._image.clip(self._collection_bounds_geometry)
+
+    def export_to_drive(self, export_name=None, scale_m2_px=1000):
+        description = self._export_name
+        if export_name is not None:
+            description = export_name
         task_bash = {
             'image': self._image,
-            'description': "something",
+            'description': description,
             'region': self._collection_bounds_geometry,
-            'scale': 1000,
+            'scale': scale_m2_px,
             'folder': 'GEE_TEST'
         }
         task = ee.batch.Export.image.toDrive(**task_bash)
