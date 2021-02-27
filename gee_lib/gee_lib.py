@@ -1182,6 +1182,14 @@ class GoogleEarthEngine:
         else:  # if dataset_id not in FICT_FULL_DATASET DKEY list
             print("Error: Uknown Dataset.")  # print error
 
+
+    def create_square_geometry(self, x_center, y_center, size):
+        x_min = x_center - size/2
+        x_max = x_center + size / 2
+        y_min = y_center - size/2
+        y_max = y_center + size / 2
+
+
     def create_image_index(self, index_name, clip_image=False, G=2.5, L=1.0, C1=6, C2=7.5, px_base=PX_BASE_MEAN):
         self._export_name = self._export_name_base
         if px_base == PX_BASE_MIN:
