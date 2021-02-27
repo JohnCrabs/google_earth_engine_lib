@@ -1267,7 +1267,7 @@ class GoogleEarthEngine:
                     'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_SWIR_1_DKEY]),
                 }
             )
-            self._export_name += '_NBSI'
+            self._export_name += '_NDSI'
         elif index_name == NDWI_INDEX:
             if _NIR_DKEY in DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY].keys():
                 nir_DKEY = _NIR_DKEY
@@ -1280,7 +1280,7 @@ class GoogleEarthEngine:
                     'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_SWIR_1_DKEY]),
                 }
             )
-            self._export_name += '_NBWI'
+            self._export_name += '_NDWI'
         else:
             print("Error: Uknown Index")
             return
