@@ -3,7 +3,7 @@ import ee
 # Try to Initialize Earth Engine API and if it fails Authentication is needed first.
 try:
     ee.Initialize()
-except:
+except IOError:
     ee.Authenticate()
     ee.Initialize()
 
@@ -218,10 +218,10 @@ _S05_TROPOPAUSE_PRESSURE_DKEY = 'TROPOPAUSE_PRESSURE'
 _S05_O3_COLUMN_NUMBER_DENSITY_DKEY = 'O3_COLUMN_NUMBER_DENSITY'
 _S05_O3_EFFECTIVE_TEMPERATURE_DKEY = 'O3_EFFECTIVE_TEMPERATURE'
 
-_S05_S02_COLUMN_NUMBER_DENSITY_DKEY = 'S02_COLUMN_NUMBER_DENSITY'
-_S05_S02_COLUMN_NUMBER_DENSITY_AMF_DKEY = 'S02_COLUMN_NUMBER_DENSITY_AMF'
-_S05_S02_SLANT_COLUMN_NUMBER_DENSITY_DKEY = 'S02_SLANT_COLUMN_NUMBER_DENSITY'
-_S05_S02_COLUMN_NUMBER_DENSITY_15KM_DKEY = 'S02_COLUMN_NUMBER_DENSITY_15KM'
+_S05_SO2_COLUMN_NUMBER_DENSITY_DKEY = 'S02_COLUMN_NUMBER_DENSITY'
+_S05_SO2_COLUMN_NUMBER_DENSITY_AMF_DKEY = 'S02_COLUMN_NUMBER_DENSITY_AMF'
+_S05_SO2_SLANT_COLUMN_NUMBER_DENSITY_DKEY = 'S02_SLANT_COLUMN_NUMBER_DENSITY'
+_S05_SO2_COLUMN_NUMBER_DENSITY_15KM_DKEY = 'S02_COLUMN_NUMBER_DENSITY_15KM'
 
 _S05_CH4_COLUMN_VOLUME_MIXING_RATIO_DRY_AIR_DKEY = 'CH4_COLUMN_VOLUME_MIXING_RATIO_DRY_AIR'
 _S05_AEROSOL_HEIGHT_DKEY = 'AEROSOL_HEIGHT'
@@ -1043,16 +1043,16 @@ DICT_FULL_DATASET = {
             _END_DATE_DKEY: '2021-02-10T00:00:00'
         },
         _BANDS_DKEY: {
-            _S05_S02_COLUMN_NUMBER_DENSITY_DKEY: 'SO2_column_number_density',
-            _S05_S02_COLUMN_NUMBER_DENSITY_AMF_DKEY: 'SO2_column_number_density_amf',
-            _S05_S02_SLANT_COLUMN_NUMBER_DENSITY_DKEY: 'SO2_slant_column_number_density',
+            _S05_SO2_COLUMN_NUMBER_DENSITY_DKEY: 'SO2_column_number_density',
+            _S05_SO2_COLUMN_NUMBER_DENSITY_AMF_DKEY: 'SO2_column_number_density_amf',
+            _S05_SO2_SLANT_COLUMN_NUMBER_DENSITY_DKEY: 'SO2_slant_column_number_density',
             _S05_ABSORBING_AEROSOL_INDEX_DKEY: 'absorbing_aerosol_index',
             _S05_CLOUD_FRACTION_DKEY: 'cloud_fraction',
             _S05_SENSOR_AZIMUTH_ANGLE_DKEY: 'sensor_azimuth_angle',
             _S05_SENSOR_ZENITH_ANGLE_DKEY: 'sensor_zenith_angle',
             _S05_SOLAR_AZIMUTH_ANGLE_DKEY: 'solar_azimuth_angle',
             _S05_SOLAR_ZENITH_ANGLE_DKEY: 'solar_zenith_angle',
-            _S05_S02_COLUMN_NUMBER_DENSITY_15KM_DKEY: 'SO2_column_number_density_15km'
+            _S05_SO2_COLUMN_NUMBER_DENSITY_15KM_DKEY: 'SO2_column_number_density_15km'
         }
     }, GSV_DS_SENTINEL_5_OFFL_CH4_DKEY: {  # SENTINEL 5 CH4
         _COLLECTION_ID_DKEY: 'COPERNICUS/S5P/OFFL/L3_CH4',
@@ -1153,6 +1153,17 @@ class GoogleEarthEngine:
                 new_geometry.merge(tmp_geometry)
 
         self._collection_bounds_geometry = new_geometry.geometry()
+
+    def set_collection_geometry_as_a_square_bound(self, point_1: [], point_2: []):
+        min_x = min(point_1[0], point_2[0])
+        max_x = max(point_1[0], point_2[0])
+        min_y = min(point_1[1], point_2[1])
+        max_y = max(point_1[1], point_2[1])
+        self._collection_bounds_geometry = ee.Geometry.Polygon([[min_x, min_y],
+                                                                [max_x, min_y],
+                                                                [max_x, max_y],
+                                                                [min_x, max_y],
+                                                                [min_x, min_y]])
 
     def set_collection(self, dataset_id):
         """
@@ -1287,6 +1298,10 @@ class GoogleEarthEngine:
         if clip_image:
             if self._collection_bounds_geometry is not None:
                 self._image = self._image.clip(self._collection_bounds_geometry)
+
+    def create_image_from_band(self, band):
+        self._image = self._image_collection.mean().clip(self._collection_bounds_geometry)
+        self._image = self._image.select([band])
 
     def export_to_drive(self, export_name=None, scale_m2_px=1000):
         description = self._export_name
