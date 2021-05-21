@@ -135,14 +135,14 @@ _COLLECTION_ID_DKEY = 'COLLECTION_ID'
 _DATE_DKEY = 'DATE'
 _START_DATE_DKEY = 'START_DATE'
 _END_DATE_DKEY = 'END_DATE'
-_BANDS_DKEY = 'BANDS'
+BANDS_DKEY = 'BANDS'
 
 # ----- SATELITE BANDS ----- #
 
 _SINGLE_BAND_DKEY = 'SINGLE_BAND'
-_RED_DKEY = 'RED'
-_GREEN_DKEY = 'GREEN'
-_BLUE_DKEY = 'BLUE'
+RED_DKEY = 'RED'
+GREEN_DKEY = 'GREEN'
+BLUE_DKEY = 'BLUE'
 _NIR_DKEY = 'NIR'
 _NIR_1_DKEY = 'NIR_1'
 _NIR_2_DKEY = 'NIR_2'
@@ -375,9 +375,9 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1972-07-23T00:00:00',
             _END_DATE_DKEY: '1978-01-07T00:00:00'
         },
-        _BANDS_DKEY: {
-            _GREEN_DKEY: 'B4',
-            _RED_DKEY: 'B5',
+        BANDS_DKEY: {
+            GREEN_DKEY: 'B4',
+            RED_DKEY: 'B5',
             _NIR_1_DKEY: 'B6',
             _NIR_2_DKEY: 'B7',
             _BQA_DKEY: 'BQA'
@@ -388,9 +388,9 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1975-01-22T00:00:00',
             _END_DATE_DKEY: '1982-02-26T00:00:00'
         },
-        _BANDS_DKEY: {
-            _GREEN_DKEY: 'B4',
-            _RED_DKEY: 'B5',
+        BANDS_DKEY: {
+            GREEN_DKEY: 'B4',
+            RED_DKEY: 'B5',
             _NIR_1_DKEY: 'B6',
             _NIR_2_DKEY: 'B7',
             _BQA_DKEY: 'BQA'
@@ -401,9 +401,9 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1978-03-05T00:00:00',
             _END_DATE_DKEY: '1983-03-31T00:00:00'
         },
-        _BANDS_DKEY: {
-            _GREEN_DKEY: 'B4',
-            _RED_DKEY: 'B5',
+        BANDS_DKEY: {
+            GREEN_DKEY: 'B4',
+            RED_DKEY: 'B5',
             _NIR_1_DKEY: 'B6',
             _NIR_2_DKEY: 'B7',
             _BQA_DKEY: 'BQA'
@@ -414,9 +414,9 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1982-07-16T00:00:00',
             _END_DATE_DKEY: '1993-12-14T00:00:00'
         },
-        _BANDS_DKEY: {
-            _GREEN_DKEY: 'B4',
-            _RED_DKEY: 'B5',
+        BANDS_DKEY: {
+            GREEN_DKEY: 'B4',
+            RED_DKEY: 'B5',
             _NIR_1_DKEY: 'B6',
             _NIR_2_DKEY: 'B7',
             _BQA_DKEY: 'BQA'
@@ -427,10 +427,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1984-03-01T00:00:00',
             _END_DATE_DKEY: '2013-01-31T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_DKEY: 'B6',
@@ -442,10 +442,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1984-03-01T00:00:00',
             _END_DATE_DKEY: '2013-01-31T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_DKEY: 'B6',
@@ -458,10 +458,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1982-08-22T00:00:00',
             _END_DATE_DKEY: '1982-08-22T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_DKEY: 'B6',
@@ -474,7 +474,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1989-01-01',
             _END_DATE_DKEY: '1992-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'BAI'
         }
     }, GSV_DS_LANDSAT_4_8DAY_EVI_DKEY: {  # LANDSAT 4 EVI
@@ -483,7 +483,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1989-01-01',
             _END_DATE_DKEY: '1992-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'EVI'
         }
     }, GSV_DS_LANDSAT_4_8DAY_NDVI_DKEY: {  # LANDSAT 4 NDVI
@@ -492,7 +492,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1989-01-01',
             _END_DATE_DKEY: '1992-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDVI'
         }
     }, GSV_DS_LANDSAT_4_8DAY_NBRT_DKEY: {  # LANDSAT 4 NBRT
@@ -501,7 +501,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1989-01-01',
             _END_DATE_DKEY: '1992-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NBRT'
         }
     }, GSV_DS_LANDSAT_4_8DAY_NDSI_DKEY: {  # LANDSAT 4 NDSI
@@ -510,7 +510,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1989-01-01',
             _END_DATE_DKEY: '1992-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDSI'
         }
     }, GSV_DS_LANDSAT_4_8DAY_NDWI_DKEY: {  # LANDSAT 4 NDWI
@@ -519,7 +519,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1989-01-01',
             _END_DATE_DKEY: '1992-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDWI'
         }
     }, GSV_DS_LANDSAT_5_DKEY: {  # LANDSAT 5
@@ -528,9 +528,9 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1984-03-01T00:00:00',
             _END_DATE_DKEY: '2013-01-31T00:00:00'
         },
-        _BANDS_DKEY: {
-            _GREEN_DKEY: 'B4',
-            _RED_DKEY: 'B5',
+        BANDS_DKEY: {
+            GREEN_DKEY: 'B4',
+            RED_DKEY: 'B5',
             _NIR_1_DKEY: 'B6',
             _NIR_2_DKEY: 'B7',
             _BQA_DKEY: 'BQA'
@@ -541,10 +541,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1984-01-01T00:00:00',
             _END_DATE_DKEY: '2012-05-05T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_DKEY: 'B6',
@@ -556,10 +556,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1984-01-01T00:00:00',
             _END_DATE_DKEY: '2012-05-05T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_DKEY: 'B6',
@@ -572,10 +572,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1984-01-01T00:00:00',
             _END_DATE_DKEY: '2012-05-05T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_DKEY: 'B6',
@@ -588,7 +588,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2011-01-01',
             _END_DATE_DKEY: '2011-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'BAI'
         }
     }, GSV_DS_LANDSAT_5_8DAY_EVI_DKEY: {  # LANDSAT 5 EVI
@@ -597,7 +597,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2011-01-01',
             _END_DATE_DKEY: '2011-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'EVI'
         }
     }, GSV_DS_LANDSAT_5_8DAY_NDVI_DKEY: {  # LANDSAT 5 NDVI
@@ -606,7 +606,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2011-01-01',
             _END_DATE_DKEY: '2011-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDVI'
         }
     }, GSV_DS_LANDSAT_5_8DAY_NBRT_DKEY: {  # LANDSAT 5 NBRT
@@ -615,7 +615,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2011-01-01',
             _END_DATE_DKEY: '2011-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NBRT'
         }
     }, GSV_DS_LANDSAT_5_8DAY_NDSI_DKEY: {  # LANDSAT 5 NDSI
@@ -624,7 +624,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2011-01-01',
             _END_DATE_DKEY: '2011-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDSI'
         }
     }, GSV_DS_LANDSAT_5_8DAY_NDWI_DKEY: {  # LANDSAT 5 NDWI
@@ -633,7 +633,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2011-01-01',
             _END_DATE_DKEY: '2011-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDWI'
         }
     }, GSV_DS_LANDSAT_7_SR_T1_DKEY: {  # LANDSAT 7 SR T1
@@ -642,10 +642,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01T00:00:00',
             _END_DATE_DKEY: '2021-01-13T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_DKEY: 'B6',
@@ -657,10 +657,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01T00:00:00',
             _END_DATE_DKEY: '2021-01-15T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_1_DKEY: 'B6_VCID_1',
@@ -675,10 +675,10 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01T00:00:00',
             _END_DATE_DKEY: '2021-01-15T00:00:00'
         },
-        _BANDS_DKEY: {
-            _BLUE_DKEY: 'B1',
-            _GREEN_DKEY: 'B2',
-            _RED_DKEY: 'B3',
+        BANDS_DKEY: {
+            BLUE_DKEY: 'B1',
+            GREEN_DKEY: 'B2',
+            RED_DKEY: 'B3',
             _NIR_DKEY: 'B4',
             _SWIR_1_DKEY: 'B5',
             _THERMAL_INFRARED_1_DKEY: 'B6_VCID_1',
@@ -693,7 +693,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01',
             _END_DATE_DKEY: '2002-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'BAI'
         }
     }, GSV_DS_LANDSAT_7_8DAY_EVI_DKEY: {  # LANDSAT 7 EVI
@@ -702,7 +702,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01',
             _END_DATE_DKEY: '2002-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'EVI'
         }
     }, GSV_DS_LANDSAT_7_8DAY_NDVI_DKEY: {  # LANDSAT 7 NDVI
@@ -711,7 +711,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01',
             _END_DATE_DKEY: '2002-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDVI'
         }
     }, GSV_DS_LANDSAT_7_8DAY_NBRT_DKEY: {  # LANDSAT 7 NBRT
@@ -720,7 +720,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01',
             _END_DATE_DKEY: '2002-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NBRT'
         }
     }, GSV_DS_LANDSAT_7_8DAY_NDSI_DKEY: {  # LANDSAT 7 NDSI
@@ -729,7 +729,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01',
             _END_DATE_DKEY: '2002-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDSI'
         }
     }, GSV_DS_LANDSAT_7_8DAY_NDWI_DKEY: {  # LANDSAT 7 NDWI
@@ -738,7 +738,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01',
             _END_DATE_DKEY: '2002-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDWI'
         }
     }, GSV_DS_LANDSAT_8_SR_T1_DKEY: {  # LANDSAT 8 SR T1
@@ -747,11 +747,11 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2013-04-11T00:00:00',
             _END_DATE_DKEY: '2021-01-22T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _ULTRA_BLUE_DKEY: 'B1',
-            _BLUE_DKEY: 'B2',
-            _GREEN_DKEY: 'B3',
-            _RED_DKEY: 'B4',
+            BLUE_DKEY: 'B2',
+            GREEN_DKEY: 'B3',
+            RED_DKEY: 'B4',
             _NIR_DKEY: 'B5',
             _SWIR_1_DKEY: 'B6',
             _SWIR_2_DKEY: 'B7',
@@ -764,11 +764,11 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '1999-01-01T00:00:00',
             _END_DATE_DKEY: '2021-01-15T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _COASTAL_AEROSOL_DKEY: 'B1',
-            _BLUE_DKEY: 'B2',
-            _GREEN_DKEY: 'B3',
-            _RED_DKEY: 'B4',
+            BLUE_DKEY: 'B2',
+            GREEN_DKEY: 'B3',
+            RED_DKEY: 'B4',
             _NIR_DKEY: 'B5',
             _SWIR_1_DKEY: 'B6',
             _SWIR_2_DKEY: 'B7',
@@ -784,11 +784,11 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2013-04-11T00:00:00',
             _END_DATE_DKEY: '2021-02-05T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _COASTAL_AEROSOL_DKEY: 'B1',
-            _BLUE_DKEY: 'B2',
-            _GREEN_DKEY: 'B3',
-            _RED_DKEY: 'B4',
+            BLUE_DKEY: 'B2',
+            GREEN_DKEY: 'B3',
+            RED_DKEY: 'B4',
             _NIR_DKEY: 'B5',
             _SWIR_1_DKEY: 'B6',
             _SWIR_2_DKEY: 'B7',
@@ -804,7 +804,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2017-01-01',
             _END_DATE_DKEY: '2017-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'BAI'
         }
     }, GSV_DS_LANDSAT_8_8DAY_EVI_DKEY: {  # LANDSAT 8 EVI
@@ -813,7 +813,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2017-01-01',
             _END_DATE_DKEY: '2017-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'EVI'
         }
     }, GSV_DS_LANDSAT_8_8DAY_NDVI_DKEY: {  # LANDSAT 8 NDVI
@@ -822,7 +822,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2017-01-01',
             _END_DATE_DKEY: '2017-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDVI'
         }
     }, GSV_DS_LANDSAT_8_8DAY_NBRT_DKEY: {  # LANDSAT 8 NBRT
@@ -831,7 +831,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2017-01-01',
             _END_DATE_DKEY: '2017-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NBRT'
         }
     }, GSV_DS_LANDSAT_8_8DAY_NDSI_DKEY: {  # LANDSAT 8 NDSI
@@ -840,7 +840,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2017-01-01',
             _END_DATE_DKEY: '2017-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDSI'
         }
     }, GSV_DS_LANDSAT_8_8DAY_NDWI_DKEY: {  # LANDSAT 8 NDWI
@@ -849,7 +849,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2017-01-01',
             _END_DATE_DKEY: '2017-12-31'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _SINGLE_BAND_DKEY: 'NDWI'
         }
     }, GSV_DS_SENTINEL_1_SAR_GRD_DKEY: {  # SENTINEL 1 SAR GRD
@@ -858,7 +858,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2014-10-03T00:00:00',
             _END_DATE_DKEY: '2021-02-10T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _HH_DKEY: 'HH',
             _HV_DKEY: 'HV',
             _VV_DKEY: 'VV',
@@ -870,11 +870,11 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2015-06-23T00:00:00',
             _END_DATE_DKEY: '2021-02-12T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _AEROSOL_DKEY: 'B1',
-            _BLUE_DKEY: 'B2',
-            _GREEN_DKEY: 'B3',
-            _RED_DKEY: 'B4',
+            BLUE_DKEY: 'B2',
+            GREEN_DKEY: 'B3',
+            RED_DKEY: 'B4',
             _RED_EDGE_1_DKEY: 'B5',
             _RED_EDGE_2_DKEY: 'B6',
             _RED_EDGE_3_DKEY: 'B7',
@@ -891,11 +891,11 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2017-03-28T00:00:00',
             _END_DATE_DKEY: '2021-02-12T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _AEROSOL_DKEY: 'B1',
-            _BLUE_DKEY: 'B2',
-            _GREEN_DKEY: 'B3',
-            _RED_DKEY: 'B4',
+            BLUE_DKEY: 'B2',
+            GREEN_DKEY: 'B3',
+            RED_DKEY: 'B4',
             _RED_EDGE_1_DKEY: 'B5',
             _RED_EDGE_2_DKEY: 'B6',
             _RED_EDGE_3_DKEY: 'B7',
@@ -912,7 +912,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2016-10-18T19:25:42',
             _END_DATE_DKEY: '2021-02-12T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S03_AEROSOL_CORRECTION_DKEY: 'Oa01_radiance',
             _S03_YELLOW_SUBSTANCE_DKEY: 'Oa02_radiance',
             _S03_CHL_ABSORPTION_MAX_DKEY: 'Oa03_radiance',
@@ -942,7 +942,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2018-07-04T13:34:21',
             _END_DATE_DKEY: '2021-02-11T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S05_ABSORBING_AEROSOL_INDEX_DKEY: 'absorbing_aerosol_index',
             _S05_SENSOR_ALTITUDE_DKEY: 'sensor_altitude',
             _S05_SENSOR_AZIMUTH_ANGLE_DKEY: 'sensor_azimuth_angle',
@@ -956,7 +956,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2018-07-04T11:34:21',
             _END_DATE_DKEY: '2021-02-11T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S05_CLOUD_FRACTION_DKEY: 'cloud_fraction',
             _S05_CLOUD_TOP_PRESSURE_DKEY: 'cloud_top_pressure',
             _S05_CLOUD_TOP_HEIGHT_DKEY: 'cloud_top_height',
@@ -975,7 +975,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2018-06-28T10:24:07',
             _END_DATE_DKEY: '2021-02-11T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S05_CO_COLUMN_NUMBER_DENSITY_DKEY: 'CO_column_number_density',
             _S05_H20_COLUMN_NUMBER_DENSITY_DKEY: 'H2O_column_number_density',
             _S05_CLOUD_HEIGHT_DKEY: 'cloud_height',
@@ -991,7 +991,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2018-12-05T12:14:36',
             _END_DATE_DKEY: '2021-02-11T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S05_TROPOSHERIC_HCHO_COLUMN_NUMBER_DENSITY_DKEY: 'tropospheric_HCHO_column_number_density',
             _S05_TROPOSHERIC_HCHO_COLUMN_NUMBER_DENSITY_AMF_DKEY: 'tropospheric_HCHO_column_number_density_amf',
             _S05_HCHO_SLANT_COLUMN_NUMBER_DENSITY_DKEY: 'HCHO_slant_column_number_density',
@@ -1007,7 +1007,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2018-06-28T10:24:07',
             _END_DATE_DKEY: '2021-02-03T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S05_NO2_COLUMN_NUMBER_DENSITY_DKEY: 'NO2_column_number_density',
             _S05_TROPOSPHERIC_NO2_COLUMN_NUMBER_DENSITY_DKEY: 'tropospheric_NO2_column_number_density',
             _S05_STRATOSPHERIC_NO2_COLUMN_NUMBER_DENSITY_DKEY: 'stratospheric_NO2_column_number_density',
@@ -1027,7 +1027,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2018-09-08T21:19:29',
             _END_DATE_DKEY: '2021-02-10T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S05_O3_COLUMN_NUMBER_DENSITY_DKEY: 'O3_column_number_density',
             _S05_O3_EFFECTIVE_TEMPERATURE_DKEY: 'O3_effective_temperature',
             _S05_CLOUD_FRACTION_DKEY: 'cloud_fraction',
@@ -1042,7 +1042,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2018-12-05T11:53:01',
             _END_DATE_DKEY: '2021-02-10T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S05_SO2_COLUMN_NUMBER_DENSITY_DKEY: 'SO2_column_number_density',
             _S05_SO2_COLUMN_NUMBER_DENSITY_AMF_DKEY: 'SO2_column_number_density_amf',
             _S05_SO2_SLANT_COLUMN_NUMBER_DENSITY_DKEY: 'SO2_slant_column_number_density',
@@ -1060,7 +1060,7 @@ DICT_FULL_DATASET = {
             _START_DATE_DKEY: '2019-02-08T08:13:16',
             _END_DATE_DKEY: '2021-02-11T00:00:00'
         },
-        _BANDS_DKEY: {
+        BANDS_DKEY: {
             _S05_CH4_COLUMN_VOLUME_MIXING_RATIO_DRY_AIR_DKEY: 'CH4_column_volume_mixing_ratio_dry_air',
             _S05_AEROSOL_HEIGHT_DKEY: 'aerosol_height',
             _S05_AEROSOL_OPTICAL_DEPTH_DKEY: 'aerosol_optical_depth',
@@ -1209,8 +1209,8 @@ class GoogleEarthEngine:
             self._image = tmp_mean_img.expression(
                 '1.0 / ((0.1 - RED)**2 + (0.06 - NIR)**2)',
                 {
-                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_RED_DKEY]),
-                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_NIR_DKEY])
+                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][RED_DKEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_NIR_DKEY])
                 }
             )
             self._export_name += '_BAI'
@@ -1222,9 +1222,9 @@ class GoogleEarthEngine:
                     'C1': C1,
                     'C2': C2,
                     'L': L,
-                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_RED_DKEY]),
-                    'BLUE': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_BLUE_DKEY]),
-                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_NIR_DKEY])
+                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][RED_DKEY]),
+                    'BLUE': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][BLUE_DKEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_NIR_DKEY])
                 }
             )
             self._export_name += '_EVI'
@@ -1232,9 +1232,9 @@ class GoogleEarthEngine:
             self._image = tmp_mean_img.expression(
                 '2.5 * (NIR - RED) / (NIR + 2.4 * RED + 1)',
                 {
-                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_RED_DKEY]),
-                    'BLUE': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_BLUE_DKEY]),
-                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_NIR_DKEY])
+                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][RED_DKEY]),
+                    'BLUE': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][BLUE_DKEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_NIR_DKEY])
                 }
             )
             self._export_name += '_EVI2'
@@ -1242,8 +1242,8 @@ class GoogleEarthEngine:
             self._image = tmp_mean_img.expression(
                 '(NIR - RED) / (NIR + RED)',
                 {
-                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_RED_DKEY]),
-                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_NIR_DKEY])
+                    'RED': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][RED_DKEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_NIR_DKEY])
                 }
             )
             self._export_name += '_NDVI'
@@ -1251,22 +1251,22 @@ class GoogleEarthEngine:
             self._image = tmp_mean_img.expression(
                 '(NIR - SWIR) / (NIR + SWIR)',
                 {
-                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_NIR_DKEY]),
-                    'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_SWIR_1_DKEY])
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_NIR_DKEY]),
+                    'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_SWIR_1_DKEY])
                 }
             )
             self._export_name += '_NBR'
         elif index_name == NBRT_INDEX:
-            if _THERMAL_INFRARED_DKEY in DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY].keys():
+            if _THERMAL_INFRARED_DKEY in DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY].keys():
                 thermal_DKEY = _THERMAL_INFRARED_DKEY
             else:
                 thermal_DKEY = _THERMAL_INFRARED_1_DKEY
             self._image = tmp_mean_img.expression(
                 '(NIR - SWIR * (THERMAL/1000)) / (NIR + SWIR * (THERMAL/1000))',
                 {
-                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_NIR_DKEY]),
-                    'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_SWIR_2_DKEY]),
-                    'THERMAL': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][thermal_DKEY])
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_NIR_DKEY]),
+                    'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_SWIR_2_DKEY]),
+                    'THERMAL': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][thermal_DKEY])
                 }
             )
             self._export_name += '_NBRT'
@@ -1274,21 +1274,21 @@ class GoogleEarthEngine:
             self._image = tmp_mean_img.expression(
                 '(GREEN - SWIR) / (GREEN + SWIR)',
                 {
-                    'GREEN': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_GREEN_DKEY]),
-                    'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_SWIR_1_DKEY]),
+                    'GREEN': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][GREEN_DKEY]),
+                    'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_SWIR_1_DKEY]),
                 }
             )
             self._export_name += '_NDSI'
         elif index_name == NDWI_INDEX:
-            if _NIR_DKEY in DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY].keys():
+            if _NIR_DKEY in DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY].keys():
                 nir_DKEY = _NIR_DKEY
             else:
                 nir_DKEY = _NIR_1_DKEY
             self._image = tmp_mean_img.expression(
                 '(NIR - SWIR) / (NIR + SWIR)',
                 {
-                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][nir_DKEY]),
-                    'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][_BANDS_DKEY][_SWIR_1_DKEY]),
+                    'NIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][nir_DKEY]),
+                    'SWIR': tmp_mean_img.select(DICT_FULL_DATASET[self._dataset_id][BANDS_DKEY][_SWIR_1_DKEY]),
                 }
             )
             self._export_name += '_NDWI'
@@ -1303,7 +1303,14 @@ class GoogleEarthEngine:
         self._image = self._image_collection.mean().clip(self._collection_bounds_geometry)
         self._image = self._image.select([band])
 
-    def export_to_drive(self, export_name=None, scale_m2_px=1000):
+    def create_image_from_bands(self, RB, GB, BB):
+        self._image = self._image_collection.mean().clip(self._collection_bounds_geometry)
+        self._image = self._image.select([RB, GB, BB])
+
+    def create_image(self):
+        self._image = self._image_collection.mean().clip(self._collection_bounds_geometry)
+
+    def export_to_drive(self, export_name=None, scale_m2_px=1000, folder_name='GEE_TEST'):
         description = self._export_name
         if export_name is not None:
             description = export_name
@@ -1312,7 +1319,7 @@ class GoogleEarthEngine:
             'description': description,
             'region': self._collection_bounds_geometry,
             'scale': scale_m2_px,
-            'folder': 'GEE_TEST'
+            'folder': folder_name
         }
         task = ee.batch.Export.image.toDrive(**task_bash)
         task.start()

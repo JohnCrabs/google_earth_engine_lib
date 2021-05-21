@@ -2,8 +2,9 @@ import lib.my_calendar_v2 as my_cal_v2
 import gee_lib.gee_lib as gee
 
 _DATE_RANGE = ['2020-01-01', '2020-12-31']
+_PERIOD_DAY_MULTIPLIER = 1  # days in a row
 _PERIOD_ALPHA_MULTIPLIER = 1  # a multiplier for weeks
-_PERIOD_STEP = _PERIOD_ALPHA_MULTIPLIER * 6  # the period step
+_PERIOD_STEP = _PERIOD_ALPHA_MULTIPLIER * _PERIOD_DAY_MULTIPLIER  # the period step
 
 # Break the date range into smaller ranges
 _LIST_DATE_RANGES_PERIOD = my_cal_v2.break_date_range_to_periods(date_start=_DATE_RANGE[0],
@@ -18,20 +19,21 @@ _LIST_DATE_RANGES_FOR_PATHS = my_cal_v2.create_string_list_date_range(list_input
                                                                       del_input=my_cal_v2.del_dash,
                                                                       del_output=my_cal_v2.del_none)
 
-point_1 = [23.543180515525126, 37.859804130390934]
-point_2 = [24.097990085837626, 38.223205370141090]
-pollutant = 'nitrogen_dioxide_NO2_density'
-pixel_size = 30
+point_1 = [23.00, 40.50]
+point_2 = [23.25, 40.75]
+pixel_size = 5
 
 my_df = gee.GoogleEarthEngine()
-dataset_code = gee.GSV_DS_SENTINEL_5_OFFL_NO2_DKEY
-band_name = gee._S05_NO2_COLUMN_NUMBER_DENSITY_DKEY
+dataset_code = gee.GSV_DS_SENTINEL_2_MSI_SR_DKEY
+band_name = [gee.DICT_FULL_DATASET[dataset_code][gee.BANDS_DKEY][gee.RED_DKEY],
+             gee.DICT_FULL_DATASET[dataset_code][gee.BANDS_DKEY][gee.GREEN_DKEY],
+             gee.DICT_FULL_DATASET[dataset_code][gee.BANDS_DKEY][gee.BLUE_DKEY]]
 
 for date_range_index in range(0, len(_LIST_DATE_RANGES_PERIOD)):
     my_df.set_collection_date_range(date_range=_LIST_DATE_RANGES_PERIOD[date_range_index])
     # my_df.set_collection_geometry_from_gee_country_str('Greece')
     my_df.set_collection_geometry_as_a_square_bound(point_1=point_1, point_2=point_2)
     my_df.set_collection(dataset_id=dataset_code)
-    my_df.create_image_from_band(band=gee.DICT_FULL_DATASET[dataset_code][gee._BANDS_DKEY][band_name])
-    export_name = pollutant + '_' + 'Greece_Athens' + '_' + str(pixel_size) + '_' + _LIST_DATE_RANGES_FOR_PATHS[date_range_index]
-    my_df.export_to_drive(export_name=export_name, scale_m2_px=pixel_size)
+    my_df.create_image()
+    export_name = 'S02_EGNATIA_' + str(pixel_size) + '_' + _LIST_DATE_RANGES_FOR_PATHS[date_range_index]
+    my_df.export_to_drive(export_name=export_name, scale_m2_px=pixel_size, folder_name='PANOPTIS_EGNATIA')
