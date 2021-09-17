@@ -19,19 +19,19 @@ _LIST_DATE_RANGES_FOR_PATHS = my_cal_v2.create_string_list_date_range(list_input
                                                                       del_input=my_cal_v2.del_dash,
                                                                       del_output=my_cal_v2.del_none)
 # # Athens
-# point_1 = [23.50, 37.75]
-# point_2 = [24.00, 38.25]
-# pixel_size = 50
-#
-# _EXPORT_NAME = 'S05_ATHENS_CO_'
-# _FOLDER_NAME = 'S05_ATHENS_EUPOLIS'
+point_1 = [23.50, 37.75]
+point_2 = [24.00, 38.25]
+pixel_size = 50
+
+_EXPORT_NAME = 'S05_ATHENS_SO2_'
+_FOLDER_NAME = 'S05_ATHENS_EUPOLIS'
 
 # # Belgrade
 # point_1 = [44.55, 20.20]
 # point_2 = [45.05, 20.70]
 # pixel_size = 50
 #
-# _EXPORT_NAME = 'S05_BELGRADE_CO_'
+# _EXPORT_NAME = 'S05_BELGRADE_SO2_'
 # _FOLDER_NAME = 'S05_BELGRADE_EUPOLIS'
 
 # # Gladsaxe
@@ -39,29 +39,29 @@ _LIST_DATE_RANGES_FOR_PATHS = my_cal_v2.create_string_list_date_range(list_input
 # point_2 = [56.00, 12.75]
 # pixel_size = 50
 #
-# _EXPORT_NAME = 'S05_GLADSAXE_CO_'
+# _EXPORT_NAME = 'S05_GLADSAXE_SO2_'
 # _FOLDER_NAME = 'S05_GLADSAXE_EUPOLIS'
 
-# Lodz
-point_1 = [51.50, 19.20]
-point_2 = [52.00, 19.70]
-pixel_size = 50
-
-_EXPORT_NAME = 'S05_LODZ_CO_'
-_FOLDER_NAME = 'S05_LODZ_EUPOLIS'
+# # Lodz
+# point_1 = [51.50, 19.20]
+# point_2 = [52.00, 19.70]
+# pixel_size = 50
+#
+# _EXPORT_NAME = 'S05_LODZ_SO2_'
+# _FOLDER_NAME = 'S05_LODZ_EUPOLIS'
 
 # # Rome
 # point_1 = [41.65, 12.25]
 # point_2 = [42.15, 12.75]
 # pixel_size = 50
 #
-# _EXPORT_NAME = 'S05_ROME_CO_'
+# _EXPORT_NAME = 'S05_ROME_SO2_'
 # _FOLDER_NAME = 'S05_ROME_EUPOLIS'
 
 
 my_df = gee.GoogleEarthEngine()
-dataset_code = gee.GSV_DS_SENTINEL_5_OFFL_CO_DKEY
-band_name = [gee.DICT_FULL_DATASET[dataset_code][gee.BANDS_DKEY][gee.S05_CO_COLUMN_NUMBER_DENSITY_DKEY]]
+dataset_code = gee.GSV_DS_SENTINEL_5_OFFL_SO2_DKEY
+band_name = [gee.DICT_FULL_DATASET[dataset_code][gee.BANDS_DKEY][gee.S05_SO2_COLUMN_NUMBER_DENSITY_DKEY]]
 
 for date_range_index in range(0, len(_LIST_DATE_RANGES_PERIOD)):
     my_df.set_collection_date_range(date_range=_LIST_DATE_RANGES_PERIOD[date_range_index])
