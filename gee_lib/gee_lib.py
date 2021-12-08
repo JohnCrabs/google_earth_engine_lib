@@ -137,7 +137,7 @@ _START_DATE_DKEY = 'START_DATE'
 _END_DATE_DKEY = 'END_DATE'
 BANDS_DKEY = 'BANDS'
 
-# ----- SATELITE BANDS ----- #
+# ----- SATELLITE BANDS ----- #
 
 _SINGLE_BAND_DKEY = 'SINGLE_BAND'
 RED_DKEY = 'RED'
@@ -1189,7 +1189,7 @@ class GoogleEarthEngine:
                 self._image_collection = self._image_collection.filterBounds(self._collection_bounds_geometry)
                 # print(self._image_collection, '\n')
         else:  # if dataset_id not in FICT_FULL_DATASET DKEY list
-            print("Error: Uknown Dataset.")  # print error
+            print("Error: Unknown Dataset.")  # print error
 
     # def create_square_geometry(self, x_center, y_center, size):
     #     x_min = x_center - size / 2
